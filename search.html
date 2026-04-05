@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Homes for Sale in Philadelphia | Bill Lowe | Keller Williams</title>
+  <meta name="description" content="Search homes for sale in Philadelphia, Bucks County, Montgomery County, Delaware County, and Chester County PA. Browse current MLS listings with Bill Lowe, Keller Williams Real Estate." />
+  <meta name="keywords" content="homes for sale Philadelphia PA, Philadelphia MLS listings, houses for sale Bucks County PA, Montgomery County homes for sale, Delaware County PA real estate, Chester County homes, search Philadelphia real estate" />
+  <meta property="og:title" content="Search Homes for Sale | Philadelphia Metro | Bill Lowe" />
+  <meta property="og:description" content="Browse current MLS listings across the Philadelphia metro area with Bill Lowe, Keller Williams Real Estate." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://realestatebylowe.com/search" />
+  <link rel="canonical" href="https://realestatebylowe.com/search" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Schema: SearchResultsPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SearchResultsPage",
+    "name": "Search Homes for Sale – Philadelphia Metro",
+    "description": "Search current MLS listings across Philadelphia, Bucks County, Montgomery County, Delaware County, and Chester County PA.",
+    "url": "https://realestatebylowe.com/search",
+    "provider": {
+      "@type": "RealEstateAgent",
+      "name": "Bill Lowe",
+      "url": "https://realestatebylowe.com",
+      "telephone": "+12157606285",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Keller Williams Real Estate"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --red:       #CE011F;
+      --red-dk:    #A80018;
+      --black:     #141414;
+      --charcoal:  #232323;
+      --dark:      #2E2E2E;
+      --mid:       #555555;
+      --gray:      #888888;
+      --silver:    #BBBBBB;
+      --border:    #333333;
+      --border-lt: #E8E8E8;
+      --off-white: #F6F6F6;
+      --white:     #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'Merriweather', serif; line-height: 1.25; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV (identical to main site) ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--black);
+      border-bottom: 2px solid var(--red);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 66px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 0.8rem; }
+
+    .logo-mark {
+      width: 38px; height: 38px;
+      border: 2px solid var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Merriweather', serif; font-style: italic;
+      font-size: 1rem; color: var(--white);
+    }
+
+    .logo-text strong { display: block; font-weight: 700; font-size: 0.95rem; color: var(--white); }
+    .logo-text span { font-size: 0.68rem; color: var(--silver); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    .nav-links { display: flex; align-items: center; gap: 0.15rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.74rem; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--silver);
+      padding: 0.5rem 0.9rem; transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { border-bottom: 2px solid var(--red); padding-bottom: calc(0.5rem - 2px); }
+
+    .nav-cta {
+      background: var(--red) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem !important;
+      border-radius: 1px;
+    }
+
+    .nav-cta:hover { background: var(--red-dk) !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--black);
+      padding: 7rem 3rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gray);
+      margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .eyebrow::before {
+      content: ''; display: inline-block;
+      width: 22px; height: 2px; background: var(--red);
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--white); margin-bottom: 0.6rem;
+    }
+
+    .page-header p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem; font-weight: 300; max-width: 500px;
+    }
+
+    .header-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; flex-shrink: 0; }
+
+    .btn-outline-white {
+      border: 1.5px solid var(--border); color: var(--silver);
+      padding: 0.65rem 1.4rem; font-size: 0.76rem; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase; border-radius: 1px;
+      transition: border-color 0.2s, color 0.2s; display: inline-flex;
+      align-items: center; gap: 0.5rem;
+    }
+
+    .btn-outline-white:hover { border-color: var(--silver); color: var(--white); }
+
+    .btn-red {
+      background: var(--red); color: var(--white);
+      padding: 0.65rem 1.4rem; font-weight: 700; font-size: 0.76rem;
+      letter-spacing: 0.07em; text-transform: uppercase; border-radius: 1px;
+      transition: background 0.2s; display: inline-flex; align-items: center;
+      gap: 0.5rem; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-red:hover { background: var(--red-dk); }
+
+    /* ── QUICK SEARCH BAR ── */
+    .search-bar-wrap {
+      background: var(--charcoal);
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 3rem;
+      position: sticky; top: 66px; z-index: 100;
+    }
+
+    .search-bar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;
+    }
+
+    .search-bar-inner select,
+    .search-bar-inner input {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      border-radius: 1px; padding: 0.65rem 1rem;
+      color: var(--white); font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem; outline: none; transition: border-color 0.2s;
+      min-width: 140px;
+    }
+
+    .search-bar-inner select option { background: var(--charcoal); }
+    .search-bar-inner input::placeholder { color: rgba(255,255,255,0.3); }
+    .search-bar-inner select:focus,
+    .search-bar-inner input:focus { border-color: var(--silver); }
+
+    .search-go {
+      background: var(--red); color: var(--white);
+      border: none; border-radius: 1px;
+      padding: 0.65rem 1.6rem; font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s; white-space: nowrap;
+    }
+
+    .search-go:hover { background: var(--red-dk); }
+
+    .search-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gray); margin-right: 0.25rem;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .search-layout {
+      max-width: 1200px; margin: 2.5rem auto;
+      padding: 0 3rem;
+      display: grid; grid-template-columns: 260px 1fr; gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR FILTERS ── */
+    .sidebar {
+      background: var(--white); border: 1px solid var(--border-lt);
+      border-radius: 2px; overflow: hidden;
+      position: sticky; top: 130px;
+    }
+
+    .sidebar-header {
+      background: var(--charcoal); padding: 1rem 1.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .sidebar-header span {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white);
+    }
+
+    .clear-btn {
+      font-size: 0.65rem; color: var(--gray); background: none;
+      border: none; cursor: pointer; font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s;
+    }
+
+    .clear-btn:hover { color: var(--red); }
+
+    .filter-group { padding: 1.2rem; border-bottom: 1px solid var(--border-lt); }
+    .filter-group:last-child { border-bottom: none; }
+
+    .filter-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 0.7rem;
+      display: block;
+    }
+
+    .filter-group select,
+    .filter-group input {
+      width: 100%; background: var(--off-white);
+      border: 1px solid var(--border-lt); border-radius: 1px;
+      padding: 0.6rem 0.8rem; font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem; color: var(--black); outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .filter-group select:focus,
+    .filter-group input:focus { border-color: var(--charcoal); }
+
+    .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .checkbox-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; color: var(--mid); cursor: pointer;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: auto; accent-color: var(--red);
+      cursor: pointer; margin: 0;
+    }
+
+    .apply-btn {
+      width: 100%; background: var(--black); color: var(--white);
+      border: none; padding: 0.85rem; font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+
+    .apply-btn:hover { background: var(--red); }
+
+    /* ── RESULTS AREA ── */
+    .results-area {}
+
+    .results-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;
+    }
+
+    .results-count {
+      font-size: 0.82rem; color: var(--mid); font-weight: 500;
+    }
+
+    .results-count strong { color: var(--black); font-weight: 700; }
+
+    .sort-row { display: flex; align-items: center; gap: 0.75rem; }
+
+    .sort-label { font-size: 0.72rem; color: var(--gray); font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; }
+
+    .sort-select {
+      background: var(--white); border: 1px solid var(--border-lt);
+      border-radius: 1px; padding: 0.5rem 0.8rem;
+      font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+      color: var(--black); outline: none; cursor: pointer;
+    }
+
+    /* KW IFRAME EMBED */
+    .kw-embed-wrap {
+      background: var(--white);
+      border: 1px solid var(--border-lt);
+      border-radius: 2px;
+      overflow: hidden;
+      min-height: 700px;
+      position: relative;
+    }
+
+    .kw-embed-wrap iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      display: block;
+    }
+
+    .embed-loading {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: var(--white); gap: 1rem;
+      font-size: 0.85rem; color: var(--gray);
+    }
+
+    .embed-loading .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border-lt);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Fallback card grid (shown if iframe blocked) */
+    .fallback-grid {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      padding: 1.5rem;
+    }
+
+    .listing-card {
+      border: 1px solid var(--border-lt); border-radius: 1px;
+      overflow: hidden; transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .listing-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.08); }
+
+    .listing-thumb {
+      height: 170px; background: var(--charcoal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; position: relative;
+    }
+
+    .listing-badge {
+      position: absolute; top: 0.7rem; left: 0.7rem;
+      background: var(--red); color: var(--white);
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 1px;
+    }
+
+    .listing-body { padding: 1rem 1.1rem; }
+
+    .listing-price {
+      font-family: 'Merriweather', serif; font-size: 1.2rem;
+      font-weight: 700; color: var(--black); margin-bottom: 0.2rem;
+    }
+
+    .listing-address { font-size: 0.82rem; color: var(--mid); margin-bottom: 0.6rem; }
+
+    .listing-specs {
+      display: flex; gap: 1rem; font-size: 0.75rem; color: var(--gray);
+      margin-bottom: 0.8rem;
+    }
+
+    .listing-spec { display: flex; align-items: center; gap: 0.25rem; }
+
+    .listing-county {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--red);
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 2rem 2rem;
+      margin-top: 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+
+    .cta-strip h3 {
+      font-size: 1.1rem; color: var(--white); margin-bottom: 0.3rem;
+    }
+
+    .cta-strip p { font-size: 0.84rem; color: var(--gray); font-weight: 300; }
+
+    /* ── SEO CONTENT BLOCK ── */
+    .seo-block {
+      max-width: 1200px; margin: 3rem auto 0;
+      padding: 0 3rem 4rem;
+    }
+
+    .seo-block h2 {
+      font-size: 1.4rem; color: var(--black); margin-bottom: 1rem;
+    }
+
+    .seo-block p {
+      font-size: 0.88rem; color: var(--gray); font-weight: 300;
+      margin-bottom: 0.9rem; max-width: 760px;
+    }
+
+    .county-links {
+      display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.2rem;
+    }
+
+    .county-link {
+      background: var(--white); border: 1px solid var(--border-lt);
+      border-left: 2px solid var(--red); border-radius: 1px;
+      padding: 0.5rem 0.9rem; font-size: 0.78rem; font-weight: 600;
+      color: var(--mid); transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .county-link:hover { border-left-color: var(--black); color: var(--black); background: var(--off-white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 2.2rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.2rem;
+    }
+
+    .footer-logo { display: flex; align-items: center; gap: 0.75rem; }
+
+    .footer-mark {
+      width: 32px; height: 32px; border: 1.5px solid var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Merriweather', serif; font-style: italic;
+      font-size: 0.85rem; color: var(--white);
+    }
+
+    .footer-name { font-weight: 600; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .footer-name span { color: var(--red); }
+
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.22); text-align: center; line-height: 1.6; }
+
+    .footer-links { display: flex; gap: 1.6rem; list-style: none; }
+    .footer-links a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.28); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--charcoal); border-top: 1px solid var(--border);
+        padding: 1.2rem 1.5rem; gap: 1rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      }
+      .hamburger { display: flex; }
+
+      .search-bar-wrap { padding: 1rem 1.5rem; top: 66px; }
+      .search-bar-inner { gap: 0.5rem; }
+      .search-bar-inner select,
+      .search-bar-inner input { min-width: 120px; font-size: 0.78rem; }
+
+      .search-layout { grid-template-columns: 1fr; padding: 0 1.5rem; }
+      .sidebar { position: static; }
+      .page-header { padding: 6.5rem 1.5rem 2rem; }
+      .seo-block { padding: 0 1.5rem 3rem; }
+
+      .kw-embed-wrap iframe { height: 600px; }
+      .fallback-grid { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 560px) {
+      .page-header-inner { flex-direction: column; align-items: flex-start; }
+      .search-bar-inner { flex-direction: column; }
+      .search-bar-inner select,
+      .search-bar-inner input,
+      .search-go { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">BL</div>
+    <div class="logo-text">
+      <strong>Bill Lowe</strong>
+      <span>Keller Williams Real Estate</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#serve">Who I Serve</a></li>
+    <li><a href="index.html#markets">Markets</a></li>
+    <li><a href="search.html" class="active">Search Homes</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#blog">Insights</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact Me</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <div class="eyebrow">Property Search</div>
+      <h1>Search Homes for Sale<br>in Philadelphia &amp; Surrounding Counties</h1>
+      <p>Browse current MLS listings across the five-county Philadelphia metro area. Updated daily. Powered by Keller Williams.</p>
+    </div>
+    <div class="header-actions">
+      <a href="index.html#contact" class="btn-outline-white">📞 Talk to Bill</a>
+      <a href="https://billlowe.kw.com" target="_blank" rel="noopener" class="btn-red">Full KW Search ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK SEARCH BAR -->
+<div class="search-bar-wrap">
+  <div class="search-bar-inner">
+    <span class="search-label">Filter:</span>
+    <select id="qs-county" aria-label="County">
+      <option value="">All Counties</option>
+      <option>Philadelphia County</option>
+      <option>Bucks County</option>
+      <option>Montgomery County</option>
+      <option>Delaware County</option>
+      <option>Chester County</option>
+    </select>
+    <select id="qs-type" aria-label="Property type">
+      <option value="">Property Type</option>
+      <option>Single Family</option>
+      <option>Townhouse / Rowhome</option>
+      <option>Condo</option>
+      <option>Multi-Family</option>
+      <option>Land</option>
+    </select>
+    <select id="qs-beds" aria-label="Bedrooms">
+      <option value="">Any Beds</option>
+      <option>1+ Beds</option>
+      <option>2+ Beds</option>
+      <option>3+ Beds</option>
+      <option>4+ Beds</option>
+    </select>
+    <input type="text" id="qs-zip" placeholder="ZIP or City..." aria-label="ZIP or city" />
+    <button class="search-go" onclick="doSearch()">Search →</button>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="search-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <span>Filters</span>
+      <button class="clear-btn" onclick="clearFilters()">Clear All</button>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">County</label>
+      <select id="f-county">
+        <option value="">All Counties</option>
+        <option>Philadelphia County</option>
+        <option>Bucks County</option>
+        <option>Montgomery County</option>
+        <option>Delaware County</option>
+        <option>Chester County</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Price Range</label>
+      <div class="price-row">
+        <input type="text" placeholder="Min $" id="f-min" />
+        <input type="text" placeholder="Max $" id="f-max" />
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Bedrooms</label>
+      <select id="f-beds">
+        <option value="">Any</option>
+        <option>1+</option>
+        <option>2+</option>
+        <option>3+</option>
+        <option>4+</option>
+        <option>5+</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Bathrooms</label>
+      <select id="f-baths">
+        <option value="">Any</option>
+        <option>1+</option>
+        <option>2+</option>
+        <option>3+</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Property Type</label>
+      <div class="checkbox-group">
+        <label class="checkbox-item"><input type="checkbox" checked /> Single Family</label>
+        <label class="checkbox-item"><input type="checkbox" checked /> Townhouse / Rowhome</label>
+        <label class="checkbox-item"><input type="checkbox" /> Condo</label>
+        <label class="checkbox-item"><input type="checkbox" /> Multi-Family</label>
+        <label class="checkbox-item"><input type="checkbox" /> Land</label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Buyer Type</label>
+      <div class="checkbox-group">
+        <label class="checkbox-item"><input type="checkbox" checked /> First-Time Buyers</label>
+        <label class="checkbox-item"><input type="checkbox" /> Investment / Rental</label>
+        <label class="checkbox-item"><input type="checkbox" /> Move-Up Buyers</label>
+      </div>
+    </div>
+
+    <button class="apply-btn" onclick="applyFilters()">Apply Filters →</button>
+  </aside>
+
+  <!-- RESULTS -->
+  <div class="results-area">
+    <div class="results-toolbar">
+      <p class="results-count">Showing listings from <strong>billlowe.kw.com</strong> — powered by Keller Williams MLS</p>
+      <div class="sort-row">
+        <span class="sort-label">Sort:</span>
+        <select class="sort-select">
+          <option>Newest First</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Most Bedrooms</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- KW IFRAME EMBED -->
+    <div class="kw-embed-wrap" id="embedWrap">
+      <div class="embed-loading" id="embedLoading">
+        <div class="spinner"></div>
+        <span>Loading listings from Keller Williams...</span>
+      </div>
+      <iframe
+        id="kwFrame"
+        src="https://billlowe.kw.com/search"
+        title="Search homes for sale Philadelphia PA – Bill Lowe Keller Williams"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
+        onload="iframeLoaded()"
+        onerror="iframeError()"
+      ></iframe>
+    </div>
+
+    <!-- FALLBACK: shown if iframe is blocked by KW -->
+    <div class="fallback-grid" id="fallbackGrid">
+      <div class="listing-card">
+        <div class="listing-thumb">🏠<span class="listing-badge">Active</span></div>
+        <div class="listing-body">
+          <div class="listing-price">$389,000</div>
+          <div class="listing-address">Sample St, Philadelphia, PA 19103</div>
+          <div class="listing-specs">
+            <span class="listing-spec">🛏 3 bd</span>
+            <span class="listing-spec">🚿 2 ba</span>
+            <span class="listing-spec">📐 1,450 sqft</span>
+          </div>
+          <div class="listing-county">Philadelphia County</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-thumb">🏡<span class="listing-badge">Active</span></div>
+        <div class="listing-body">
+          <div class="listing-price">$524,900</div>
+          <div class="listing-address">Oak Ave, Doylestown, PA 18901</div>
+          <div class="listing-specs">
+            <span class="listing-spec">🛏 4 bd</span>
+            <span class="listing-spec">🚿 3 ba</span>
+            <span class="listing-spec">📐 2,200 sqft</span>
+          </div>
+          <div class="listing-county">Bucks County</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-thumb">🏘️<span class="listing-badge">Active</span></div>
+        <div class="listing-body">
+          <div class="listing-price">$299,000</div>
+          <div class="listing-address">Main St, Norristown, PA 19401</div>
+          <div class="listing-specs">
+            <span class="listing-spec">🛏 3 bd</span>
+            <span class="listing-spec">🚿 1 ba</span>
+            <span class="listing-spec">📐 1,200 sqft</span>
+          </div>
+          <div class="listing-county">Montgomery County</div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-thumb">🏠<span class="listing-badge">Active</span></div>
+        <div class="listing-body">
+          <div class="listing-price">$449,500</div>
+          <div class="listing-address">Elm Dr, Media, PA 19063</div>
+          <div class="listing-specs">
+            <span class="listing-spec">🛏 4 bd</span>
+            <span class="listing-spec">🚿 2 ba</span>
+            <span class="listing-spec">📐 1,900 sqft</span>
+          </div>
+          <div class="listing-county">Delaware County</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA STRIP -->
+    <div class="cta-strip">
+      <div>
+        <h3>See a home you like?</h3>
+        <p>Call or message Bill directly — he'll arrange a showing, answer your questions, and guide you through the offer process.</p>
+      </div>
+      <div style="display:flex; gap:0.8rem; flex-wrap:wrap; flex-shrink:0;">
+        <a href="tel:2157606285" class="btn-red">📞 (215) 760-6285</a>
+        <a href="index.html#contact" class="btn-outline-white">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEO CONTENT -->
+<div class="seo-block">
+  <h2>Homes for Sale Across the Philadelphia Metro Area</h2>
+  <p>Whether you're a first-time home buyer or a real estate investor, the Philadelphia metro area offers a wide range of properties across five distinct counties. From urban rowhomes in the city to suburban single-family homes in Bucks and Chester County, there's something for every buyer and every budget.</p>
+  <p>As a local Keller Williams agent licensed in Pennsylvania, Bill Lowe helps buyers navigate current inventory, structure competitive offers, and close with confidence. Search active MLS listings above or reach out directly for a curated list of homes matching your criteria.</p>
+  <div class="county-links">
+    <a href="index.html#markets" class="county-link">Philadelphia County</a>
+    <a href="index.html#markets" class="county-link">Bucks County PA</a>
+    <a href="index.html#markets" class="county-link">Montgomery County PA</a>
+    <a href="index.html#markets" class="county-link">Delaware County PA</a>
+    <a href="index.html#markets" class="county-link">Chester County PA</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-mark">BL</div>
+    <div class="footer-name">Real Estate <span>by Lowe</span></div>
+  </div>
+  <p class="footer-copy">© 2025 Bill Lowe · Keller Williams Real Estate · License #RS316824 · Licensed in Pennsylvania · Equal Housing Opportunity<br>Each Keller Williams office is independently owned and operated. MLS data provided by Keller Williams.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#serve">Buyers</a></li>
+    <li><a href="index.html#markets">Markets</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Iframe load handler
+  function iframeLoaded() {
+    document.getElementById('embedLoading').style.display = 'none';
+  }
+
+  // If KW blocks the iframe, show fallback card grid
+  function iframeError() {
+    showFallback();
+  }
+
+  function showFallback() {
+    document.getElementById('embedLoading').style.display = 'none';
+    document.getElementById('kwFrame').style.display = 'none';
+    document.getElementById('fallbackGrid').style.display = 'grid';
+  }
+
+  // KW often blocks iframes — auto-detect after 6s and show fallback
+  setTimeout(() => {
+    const frame = document.getElementById('kwFrame');
+    try {
+      // If iframe content is empty/blocked, switch to fallback
+      if (!frame.contentDocument || !frame.contentDocument.body ||
+          frame.contentDocument.body.innerHTML === '') {
+        showFallback();
+      }
+    } catch(e) {
+      // Cross-origin block = iframe loaded but we can't read it = it's working
+      iframeLoaded();
+    }
+  }, 6000);
+
+  // Quick search bar → opens KW search with params
+  function doSearch() {
+    const county = document.getElementById('qs-county').value;
+    const zip = document.getElementById('qs-zip').value.trim();
+    let query = zip || county || 'Philadelphia PA';
+    window.open(`https://billlowe.kw.com/search?q=${encodeURIComponent(query)}`, '_blank');
+  }
+
+  function applyFilters() {
+    const county = document.getElementById('f-county').value;
+    const min = document.getElementById('f-min').value;
+    const max = document.getElementById('f-max').value;
+    const beds = document.getElementById('f-beds').value;
+    let query = county || 'Philadelphia PA';
+    let url = `https://billlowe.kw.com/search?q=${encodeURIComponent(query)}`;
+    if (min) url += `&minPrice=${min.replace(/\D/g,'')}`;
+    if (max) url += `&maxPrice=${max.replace(/\D/g,'')}`;
+    if (beds) url += `&beds=${beds.replace('+','')}`;
+    window.open(url, '_blank');
+  }
+
+  function clearFilters() {
+    document.getElementById('f-county').value = '';
+    document.getElementById('f-min').value = '';
+    document.getElementById('f-max').value = '';
+    document.getElementById('f-beds').value = '';
+    document.getElementById('f-baths').value = '';
+    document.querySelectorAll('.checkbox-item input').forEach(cb => cb.checked = false);
+  }
+
+  // Enter key on zip field triggers search
+  document.getElementById('qs-zip').addEventListener('keypress', e => {
+    if (e.key === 'Enter') doSearch();
+  });
+</script>
+</body>
+</html>
